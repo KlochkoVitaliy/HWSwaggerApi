@@ -4,13 +4,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import ru.hogwarts.school.model.Faculty;
 import ru.hogwarts.school.model.Student;
+import ru.hogwarts.school.model.StudentQuerySQL;
 import ru.hogwarts.school.repository.AvatarRepository;
 import ru.hogwarts.school.repository.StudentRepository;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class StudentService {
@@ -55,5 +53,17 @@ public class StudentService {
 
     public Faculty findFacultyByStudent(Long id) {
         return studentRepository.findById(id).get().getFaculty();
+    }
+
+    public List<StudentQuerySQL> getNameAndAge() {
+        return studentRepository.getNameAndAgeStudents();
+    }
+
+    public Integer getCountStudents() {
+        return studentRepository.getCountAllStudents();
+    }
+
+    public Double getAverageAge() {
+        return studentRepository.getAverageAge();
     }
 }
